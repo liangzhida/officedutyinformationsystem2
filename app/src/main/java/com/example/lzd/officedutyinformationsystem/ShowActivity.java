@@ -15,17 +15,18 @@ public class ShowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show);
         tv_show=findViewById(R.id.tv_show);
+        btn_retuarn=findViewById(R.id.btn_returnmain);
         Intent intent=getIntent();
         String name=intent.getStringExtra("name");
         String password=intent.getStringExtra("password");
         tv_show.setText("用户名："+name);
         tv_show.append("\n"+"密  码："+password);
+
         btn_retuarn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                Intent intent7=new Intent(ShowActivity.this,MainActivity.class);
-
-                startActivity(intent7);
+                Intent intent=new Intent(ShowActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
 

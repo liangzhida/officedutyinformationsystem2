@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 public class MyActivity extends AppCompatActivity {
     private EditText edtSex;
@@ -21,7 +22,7 @@ public class MyActivity extends AppCompatActivity {
     private Button button;
     private Uri imageUri;
     private final int CAMERA_REQUEST = 8888;
-
+    private LinearLayout MianlinearLayout;
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
@@ -34,8 +35,14 @@ public class MyActivity extends AppCompatActivity {
         edtGrade = (EditText) findViewById(R.id.edt_grade);
         edtName = (EditText) findViewById(R.id.edt_name);
         ivTouxiang = (ImageView) findViewById(R.id.iv_touxiang);
-
-
+        MianlinearLayout=findViewById(R.id.MianlinearLayout);
+        MianlinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick( View v ) {
+                Intent intent=new Intent(MyActivity.this,Main2Activity.class);
+                startActivity(intent);
+            }
+        });
 
         ivTouxiang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +50,6 @@ public class MyActivity extends AppCompatActivity {
                 Intent intent6 = new Intent();
                 intent6.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
                 startActivityForResult(intent6, CAMERA_REQUEST);
-
             }
             protected void onActivityResult ( int requestCode, int resultCode, Intent data){
                 if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {
@@ -54,6 +60,4 @@ public class MyActivity extends AppCompatActivity {
         });
 
     }
-
-
 }

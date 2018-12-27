@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,10 +20,16 @@ public class Main2Activity extends AppCompatActivity {
     private LinearLayout mylinearLayout;
     private ImageView imageView;
     private TextView textView5;
+    private LinearLayout linearLayout;
+    private Button btnSchedule;
+    private Button btnAttention;
+    private Button btnArrangement;
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+
 
 
         textView4 = (TextView) findViewById(R.id.textView4);
@@ -35,6 +42,26 @@ public class Main2Activity extends AppCompatActivity {
         mylinearLayout = (LinearLayout) findViewById(R.id.mylinearLayout);
         imageView = (ImageView) findViewById(R.id.imageView);
         textView5 = (TextView) findViewById(R.id.textView5);
+        linearLayout = (LinearLayout) findViewById(R.id.linearLayout);
+        btnSchedule = (Button) findViewById(R.id.btn_schedule);
+        btnAttention = (Button) findViewById(R.id.btn_attention);
+        btnArrangement = (Button) findViewById(R.id.btn_arrangement);
+
+        btnSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick( View v ) {
+                Intent intent=new Intent(Main2Activity.this,TableActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnAttention.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick( View v ) {
+                Intent intent=new Intent(Main2Activity.this,AttentionActivity.class);
+                startActivity(intent);
+            }
+        });
+
         mylinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {

@@ -1,6 +1,7 @@
 package com.example.lzd.officedutyinformationsystem;
 
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,11 +38,13 @@ public class EnterActivity extends AppCompatActivity {
             @Override
             public void onClick( View v ) {
                 Intent intent5=new Intent(EnterActivity.this,Main2Activity.class);
-                intent5.putExtra("name",edtName.getText().toString());
-                intent5.putExtra("age",edtAge.getText().toString());
-                intent5.putExtra("number",edtNumber.getText().toString());
-                intent5.putExtra("grade",edtGrade.getText().toString());
-                intent5.putExtra("sex",edtSex.getText().toString());
+                Intent intent8=new Intent(EnterActivity.this,MyActivity.class);
+
+                intent8.putExtra("name",edtName.getText().toString());
+                intent8.putExtra("age",edtAge.getText().toString());
+                intent8.putExtra("number",edtNumber.getText().toString());
+                intent8.putExtra("grade",edtGrade.getText().toString());
+                intent8.putExtra("sex",edtSex.getText().toString());
                 startActivity(intent5);
             }
         });
@@ -55,4 +58,6 @@ public class EnterActivity extends AppCompatActivity {
 
 
     }
+
+
 }

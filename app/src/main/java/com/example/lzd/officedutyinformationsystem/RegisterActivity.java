@@ -35,7 +35,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                if (edtName.toString().equals(null)&&edtPassword.toString().equals(null)&&edtPassword2.toString().equals(null)) {
+                if (edtName.toString().equals(null)&&edtPassword.toString().equals(null)) {
                     Toast.makeText(RegisterActivity.this,"账号，密码不能为空",Toast.LENGTH_SHORT).show();
                 }else{
                     if (edtPassword.getText().toString().equals(edtPassword2.getText().toString())) {
@@ -48,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         edtPassword.setText("");
                         edtPassword2.setText("");
-                        Toast.makeText(RegisterActivity.this, "二次密码不正确，请重新输入", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this, "注册失败，二次密码不正确，请重新输入！", Toast.LENGTH_SHORT).show();
                     }
 
 
