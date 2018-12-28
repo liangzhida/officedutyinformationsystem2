@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private TextView tvName2;
@@ -39,8 +40,17 @@ public class MainActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                Intent intent4=new Intent(MainActivity.this,EnterActivity.class);
-                startActivity(intent4);
+                Intent intent10=getIntent();
+                String name=intent10.getStringExtra("name");
+                String password=intent10.getStringExtra("password");
+                if (edtName.getText().toString().equals(name)&&edtPassword.getText().toString().equals(password)){
+                    Intent intent=new Intent(MainActivity.this,EnterActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(MainActivity.this,"账号,密码错误！",Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
     }

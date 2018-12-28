@@ -35,11 +35,11 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                if (edtName.toString().equals(null)&&edtPassword.toString().equals(null)) {
+                if (edtName.toString().equals(null)) {
                     Toast.makeText(RegisterActivity.this,"账号，密码不能为空",Toast.LENGTH_SHORT).show();
                 }else{
                     if (edtPassword.getText().toString().equals(edtPassword2.getText().toString())) {
-                        Intent intent3 = new Intent(RegisterActivity.this, ShowActivity.class);
+                        Intent intent3 = new Intent(RegisterActivity.this, MainActivity.class);
                         intent3.putExtra("name", edtName.getText().toString());
                         intent3.putExtra("password", edtPassword.getText().toString());
                         intent3.putExtra("password2", edtPassword2.getText().toString());
