@@ -2,9 +2,11 @@ package com.example.lzd.officedutyinformationsystem;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,17 +47,18 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"账号，密码不能为空",Toast.LENGTH_SHORT).show();
                 }else{
                     if (edtPassword.getText().toString().equals(edtPassword2.getText().toString())) {
-                        /*db=dbHelper.getWritableDatabase();
-                        ContentValues values=new ContentValues();
-                        values.put("name",edtName.getText().toString());
-                        values.put("password",edtPassword.getText().toString());
-                        db.insert("information",null,values);
+                        db = dbHelper.getWritableDatabase();
+                        Toast.makeText(RegisterActivity.this,"数据库创建成功！",Toast.LENGTH_SHORT).show();
+                        ContentValues values = new ContentValues();
+                        values.put("name", edtName.getText().toString());
+                        values.put("password", edtPassword.getText().toString());
+                        db.insert("information", null, values);
+                        Toast.makeText(RegisterActivity.this, "账号，密码添加成功！", Toast.LENGTH_SHORT).show();
                         values.clear();
-                        Toast.makeText(RegisterActivity.this,"账号，密码添加成功！",Toast.LENGTH_SHORT).show();*/
                         Intent intent3 = new Intent(RegisterActivity.this, MainActivity.class);
-                        intent3.putExtra("name", edtName.getText().toString());
-                        intent3.putExtra("password", edtPassword.getText().toString());
-                        intent3.putExtra("password2", edtPassword2.getText().toString());
+                        //intent3.putExtra("name", edtName.getText().toString());
+                        //intent3.putExtra("password", edtPassword.getText().toString());
+                        //intent3.putExtra("password2", edtPassword2.getText().toString());
                         startActivity(intent3);
 
                         Toast.makeText(RegisterActivity.this, "注册成功", Toast.LENGTH_SHORT).show();

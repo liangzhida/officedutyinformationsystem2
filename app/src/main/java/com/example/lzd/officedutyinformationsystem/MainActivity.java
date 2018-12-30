@@ -1,8 +1,12 @@
 package com.example.lzd.officedutyinformationsystem;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView textView3;
     private Button btnStart;
     private Button btnRegister2;
+    private MyDbHelper dbHelper;
+    private SQLiteDatabase db;
+    Cursor cursor;
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate(savedInstanceState);
@@ -40,15 +47,29 @@ public class MainActivity extends AppCompatActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick( View v ) {
-                Intent intent10=getIntent();
-                String name=intent10.getStringExtra("name");
-                String password=intent10.getStringExtra("password");
-                if (edtName.getText().toString().equals(name)&&edtPassword.getText().toString().equals(password)){
+                info info = new info();
+                String Name = edtName.getText().toString();
+                String Password = edtPassword.getText().toString();
+                db = dbHelper.getWritableDatabase();
+                Cursor cursor = db.rawQuery("select * from information where name=?", new String[]{Name});
+                if (cursor.moveToFirst()) {
+                    info.setName(cursor.getString(cursor.getColumnIndex("name")));
+                    info.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+
+                    //edtName.setText(info.getName());
+                    //edtPassword.setText(info.getPassword());
+                    Toast.makeText(MainActivity.this,"登陆成功",Toast.LENGTH_SHORT).show();
+                    Log.i("Myinfo", info.toString());
+
+                }
+                edtName.setText(Name);
+                edtPassword.setText(Password);
+                cursor.close();
+                if (edtName.getText().equals(info.getName())){
                     Intent intent=new Intent(MainActivity.this,EnterActivity.class);
                     startActivity(intent);
-                }else {
-                    Toast.makeText(MainActivity.this,"账号,密码错误！",Toast.LENGTH_SHORT).show();
                 }
+
 
 
             }
