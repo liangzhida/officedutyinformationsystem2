@@ -47,15 +47,13 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"账号，密码不能为空",Toast.LENGTH_SHORT).show();
                 }else{
                     if (edtPassword.getText().toString().equals(edtPassword2.getText().toString())) {
-                        db = dbHelper.getWritableDatabase();
-                        Toast.makeText(RegisterActivity.this,"数据库创建成功！",Toast.LENGTH_SHORT).show();
+                        db=dbHelper.getWritableDatabase();
                         ContentValues values = new ContentValues();
                         values.put("name", edtName.getText().toString());
                         values.put("password", edtPassword.getText().toString());
                         db.insert("information", null, values);
-                        Toast.makeText(RegisterActivity.this, "账号，密码添加成功！", Toast.LENGTH_SHORT).show();
                         values.clear();
-                        Intent intent3 = new Intent(RegisterActivity.this, MainActivity.class);
+                        Intent intent3 = new Intent(RegisterActivity.this, Main3Activity.class);
                         //intent3.putExtra("name", edtName.getText().toString());
                         //intent3.putExtra("password", edtPassword.getText().toString());
                         //intent3.putExtra("password2", edtPassword2.getText().toString());
@@ -77,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnReturn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2=new Intent(RegisterActivity.this,MainActivity.class);
+                Intent intent2=new Intent(RegisterActivity.this,Main3Activity.class);
                 startActivity(intent2);
             }
         });
